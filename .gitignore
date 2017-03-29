@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+/EngineExe/Debug/*
+/EngineLib/Debug/*
+/Engine.sdf
