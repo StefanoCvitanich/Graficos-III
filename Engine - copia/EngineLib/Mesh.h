@@ -33,6 +33,8 @@ public:
 	DllExport void getNames(vector<std::string>& names);
 	DllExport void updateNames(std::vector<std::string>& names, int& entityIndex);
 
+	DllExport void setNumPolygons(unsigned int polys);
+
 private:
 	Renderer& _renderer;
 	Primitive _primitive;
@@ -40,6 +42,7 @@ private:
 	pg2::VertexBuffer* _vertexBuffer;
 	Texture _texture;
 	const TexturedVertex* _verts;
+	unsigned int numPolygons;
 };
 //========================================================================================
 #endif

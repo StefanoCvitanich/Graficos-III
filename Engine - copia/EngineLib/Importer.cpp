@@ -41,7 +41,7 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		mesh.setParent(&nodo);
 		nodo.addChild(mesh);
 	}
-
+	
 	for (size_t i = 0; i < assimpNode.mNumChildren; i++)
 	{
 		Nodo* nodoHijo = new Nodo();
@@ -82,6 +82,8 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 		}
 	}
 
+	unsigned int faces = assimpMesh.mNumFaces;
+
 	unsigned int numIndices = assimpMesh.mNumFaces * 3;
 	unsigned short* indices = new unsigned short[numIndices];
 	int index = 0;
@@ -98,6 +100,8 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 	aiVector3t<float> position, scaling;
 	aiQuaterniont<float> rotation;
 	assimpNode.mTransformation.Decompose(scaling, rotation, position);
+
+	mesh->setNumPolygons(faces);
 	
 	mesh->setPosX(position.x);
 	mesh->setPosY(position.y);

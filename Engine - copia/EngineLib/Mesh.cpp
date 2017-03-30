@@ -63,10 +63,13 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 		_vertexBuffer->bind();
 		_indexBuffer->bind();
 
+		renderer.numPolygonsOnScreen += numPolygons;
+
 		_renderer.drawCurrentBuffers(_primitive);
 		_isDrawn = true;
 	}
 	else
+		renderer.numPolygonsOnScreen -= numPolygons;
 		_isDrawn = false;
 }
 //=====================================================
@@ -127,5 +130,9 @@ void Mesh::getNames(vector<string>& names){
 //=====================================================
 void Mesh::updateNames(std::vector<std::string>& names, int& entityIndex){
 	names[entityIndex] = getName();
+}
+//=====================================================
+void Mesh::setNumPolygons(unsigned int polys){
+	numPolygons = polys;
 }
 //=====================================================

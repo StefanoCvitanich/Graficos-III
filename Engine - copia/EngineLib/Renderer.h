@@ -68,6 +68,8 @@ public:
 
 	void drawCurrentBuffers(Primitive primitive);
 
+	unsigned int numPolygonsOnScreen = 0;
+
 private:
 	unsigned int uiWidth;
 	unsigned int uiHeight;

@@ -152,6 +152,10 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		_text += names[i]+"\n";
 	}
 
+	char buff[33];
+	string polysOnScreen = itoa(rkRenderer.numPolygonsOnScreen, buff, 10);
+	_text += polysOnScreen + "\n";
+
 	_screenText->setText(_text);
 	_screenText->display(rkRenderer);
 }
