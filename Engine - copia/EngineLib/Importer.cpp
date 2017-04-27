@@ -3,6 +3,7 @@
 #include "assimp\Importer.hpp"
 #include "assimp\scene.h"
 #include "assimp\postprocess.h"
+#include <d3dx9math.h>
 #include <stack>
 #include <iostream>
 //=============================================================================================================
@@ -131,6 +132,17 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 			_stack.pop();
 		}
 		mesh->setTextureId(0, _renderer.loadTexture("Assets/" + fullPath, D3DCOLOR_XRGB(255, 0, 255)));
+	}
+
+	size_t buscar = mesh->getName().find("Plano");
+
+	if (buscar != string::npos)
+	{
+		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
+		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
+		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().maxPointY, mesh->getAABB().minPointZ);
+
+		//bspPlane::createPlane(*pV1, *pV2, *pV3);
 	}
 
 	return *mesh;

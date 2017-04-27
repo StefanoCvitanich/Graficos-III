@@ -4,7 +4,9 @@
 #include "Mesh.h"
 #include "Nodo.h"
 #include <string>
-
+//============================================================
+using namespace std;
+//============================================================
 struct aiNode;
 struct aiScene;
 struct aiMesh;

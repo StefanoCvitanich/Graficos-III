@@ -5,6 +5,17 @@
 //========================================================================================
 using namespace std;
 //========================================================================================
+struct bspPlane
+{
+public:
+	DllExport bspPlane();
+	DllExport ~bspPlane();
+
+	DllExport D3DXPLANE createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3);
+
+	D3DXPLANE *plane;
+};
+//========================================================================================
 class Mesh : public Entity3D
 {
 public:

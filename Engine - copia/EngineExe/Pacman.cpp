@@ -26,14 +26,14 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	camera = new Camera();
 	
-	camera->setPos(0, 0, -500);
+	camera->setPos(0, 10, -30);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/sample_scene.dae", _root))
+	if (!_importer->importScene("Assets/Escena_bsp.dae", _root))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
-	nodo1 = (Nodo*)_root.childs()[1];
+	nodo1 = (Nodo*)_root.childs()[4];
 	
 	_max = new Mesh(rkRenderer);
 	_min = new Mesh(rkRenderer);
@@ -103,17 +103,17 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	//Transformaciones Nodo1
 	if (input.keyDown(Input::KEY_A)){
-		nodo1->setPosX(nodo1->posX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
+		nodo1->setPosX(nodo1->posX() - 2.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_D)){
-		nodo1->setPosX(nodo1->posX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
+		nodo1->setPosX(nodo1->posX() + 2.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
 	if (input.keyDown(Input::KEY_S)){
-		nodo1->setPosY(nodo1->posY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
+		nodo1->setPosZ(nodo1->posZ() - 2.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_W)){
-		nodo1->setPosY(nodo1->posY() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
+		nodo1->setPosZ(nodo1->posZ() + 2.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
 	if (input.keyDown(Input::KEY_K))

@@ -1,27 +1,4 @@
-﻿  BoundingBox.cpp
-  Generando código...
-  Compilando...
-  pg2_vertexbuffer.cpp
-  pg2_indexbuffer.cpp
-  TileMap.cpp
-  Sprite.cpp
-  ScreenText.cpp
-  Renderer.cpp
-  Quad.cpp
-  Mesh.cpp
-  Importer.cpp
-  Engine.cpp
-  Camera.cpp
-  Generando código...
-  Omitiendo... (no se detectaron cambios relevantes)
-  input.cpp
-  directinput.cpp
-  Tile.cpp
-  Physics.cpp
-  Nodo.cpp
-  Game.cpp
-  Frustum.cpp
-  Entity3D.cpp
-  Entity2D.cpp
+﻿  Importer.cpp
+cl : Línea de comandos warning D9028: error de recompilación mínimo, revirtiendo a la compilación normal
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)
