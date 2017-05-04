@@ -62,6 +62,8 @@ public:
 	DllExport virtual void updateNames(std::vector<std::string>& names, int& entityIndex) = 0;
 	DllExport virtual Entity3D& findEntity(std::string name);
 
+	bool canBeDrawn;
+
 protected:
 	void updateLocalTransformation();
 	float _posX, _posY, _posZ;

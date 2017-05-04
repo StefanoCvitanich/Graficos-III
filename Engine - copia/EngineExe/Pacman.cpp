@@ -26,6 +26,8 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	camera = new Camera();
 	
+	arbol = new bspTree();
+
 	camera->setPos(0, 10, -30);
 
 	_importer = new Importer(rkRenderer);

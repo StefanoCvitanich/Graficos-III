@@ -30,6 +30,8 @@ private:
 	list <string> meshNames;
 	vector <string> names;
 	string _text;
+
+	bspTree *arbol;
 };
 //==================================================================================
 #endif

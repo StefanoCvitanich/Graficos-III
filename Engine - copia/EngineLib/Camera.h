@@ -21,12 +21,15 @@ public:
 
 public:
 	DllExport void setPos(float x, float y, float z);
+	DllExport Vector3 getPos();
 	DllExport void setForward(float x, float y, float z);
 
 	DllExport void update(Renderer& renderer);
 
 	DllExport void updateFrustum(Renderer& renderer);
 	DllExport const Frustum& getFrustum() const;
+
+	Vector3 cameraPosition;
 
 private:
 	Vector3 _eye;

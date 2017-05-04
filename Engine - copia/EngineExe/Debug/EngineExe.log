@@ -1,3 +1,6 @@
-﻿     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.exp
+﻿  Pacman.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\engineexe\pacman.cpp(158): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1316): note: vea la declaración de 'itoa'
+     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.exp
   EngineExe.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.exe
   EngineExe.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.pdb (Full PDB)

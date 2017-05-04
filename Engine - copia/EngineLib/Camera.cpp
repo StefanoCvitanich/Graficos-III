@@ -75,6 +75,13 @@ void Camera::setPos(float x, float y, float z){
 	_eye->z = z;
 }
 //==================================================================================
+Vector3 Camera::getPos() {
+
+	cameraPosition = _eye;
+
+	return cameraPosition;
+}
+//==================================================================================
 void Camera::setForward(float x, float y, float z){
 	_lookAt->x = x;
 	_lookAt->y = y;

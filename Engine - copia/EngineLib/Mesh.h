@@ -16,6 +16,19 @@ public:
 	D3DXPLANE *plane;
 };
 //========================================================================================
+struct bspTree
+{
+public:
+	DllExport bspTree();
+	DllExport ~bspTree();
+
+	DllExport void checkTree(Entity3D *mesh, D3DXVECTOR3 *camPos);
+	DllExport void addPlaneToVector(bspPlane plane);
+
+	vector <bspPlane> planesVector;
+
+};
+//========================================================================================
 class Mesh : public Entity3D
 {
 public:

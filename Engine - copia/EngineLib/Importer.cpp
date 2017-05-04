@@ -142,7 +142,11 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
 		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().maxPointY, mesh->getAABB().minPointZ);
 
-		//bspPlane::createPlane(*pV1, *pV2, *pV3);
+		bspPlane *BSP = new bspPlane();
+		BSP->createPlane(pV1, pV2, pV3);
+		
+		bspTree *tree = new bspTree();
+		tree->addPlaneToVector(*BSP);
 	}
 
 	return *mesh;

@@ -56,21 +56,25 @@ void Mesh::setMeshData(const Vertex* texVertex,
 //=====================================================
 void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 	const Frustum& frustum){
-	if (parentResult != CollisionResult::AllOutside){
-		_renderer.setCurrentTexture(_texture);
-		_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
+	
+	if (canBeDrawn)
+	{
+		if (parentResult != CollisionResult::AllOutside) {
+			_renderer.setCurrentTexture(_texture);
+			_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
 
-		_vertexBuffer->bind();
-		_indexBuffer->bind();
+			_vertexBuffer->bind();
+			_indexBuffer->bind();
 
-		renderer.numPolygonsOnScreen += numPolygons;
+			renderer.numPolygonsOnScreen += numPolygons;
 
-		_renderer.drawCurrentBuffers(_primitive);
-		_isDrawn = true;
-	}
-	else
-		renderer.numPolygonsOnScreen -= numPolygons;
+			_renderer.drawCurrentBuffers(_primitive);
+			_isDrawn = true;
+		}
+		else
+			renderer.numPolygonsOnScreen -= numPolygons;
 		_isDrawn = false;
+	}
 }
 //=====================================================
 void Mesh::setTextureId(int iTextureId, Texture texture){
@@ -150,3 +154,46 @@ D3DXPLANE bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p
 
 	return *plane;
 }
+//=====================================================
+bspTree::bspTree() {
+}
+//=====================================================
+bspTree::~bspTree() {
+}
+//=====================================================
+void bspTree::checkTree(Entity3D *mesh, D3DXVECTOR3 *camPos) {
+
+	/*
+			*****Tengo que hacer que este metodo funcione con una lista/vector de meshes en vez de pasar un mesh como parametro****
+
+			***El importer cada vez que procesa un mesh tiene qque agregarlo a esta lista/vector****
+	*/
+
+
+
+	D3DXVECTOR3 *max = new D3DXVECTOR3(mesh->getAABB().max[0], mesh->getAABB().max[1], mesh->getAABB().max[2]);
+	D3DXVECTOR3 *min = new D3DXVECTOR3(mesh->getAABB().min[0], mesh->getAABB().min[1], mesh->getAABB().min[2]);
+
+	for (int i = 0; i <= planesVector.size(); i++)
+	{
+		float meshMaxCheck = D3DXPlaneDotCoord(planesVector[i].plane, max);
+		float meshMinCheck = D3DXPlaneDotCoord(planesVector[i].plane, min);
+		float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, camPos);
+
+		if ((camCheck > 0 && meshMaxCheck > 0) || (camCheck < 0 && meshMaxCheck < 0) || (camCheck > 0 && meshMinCheck > 0) || (camCheck < 0 && meshMinCheck < 0) ||camCheck == 0 || meshMaxCheck == 0 || meshMinCheck == 0)
+		{
+			mesh->canBeDrawn = true;
+		}
+		else
+		{
+			mesh->canBeDrawn = false;
+			break;
+		}
+	}
+}
+//=====================================================
+void bspTree::addPlaneToVector(bspPlane plane) {
+
+	planesVector.push_back(plane);
+}
+//=====================================================
