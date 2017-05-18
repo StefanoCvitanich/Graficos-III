@@ -5,30 +5,6 @@
 //========================================================================================
 using namespace std;
 //========================================================================================
-struct bspPlane
-{
-public:
-	DllExport bspPlane();
-	DllExport ~bspPlane();
-
-	DllExport D3DXPLANE createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3);
-
-	D3DXPLANE *plane;
-};
-//========================================================================================
-struct bspTree
-{
-public:
-	DllExport bspTree();
-	DllExport ~bspTree();
-
-	DllExport void checkTree(Entity3D *mesh, D3DXVECTOR3 *camPos);
-	DllExport void addPlaneToVector(bspPlane plane);
-
-	vector <bspPlane> planesVector;
-
-};
-//========================================================================================
 class Mesh : public Entity3D
 {
 public:
@@ -67,6 +43,31 @@ private:
 	Texture _texture;
 	const TexturedVertex* _verts;
 	unsigned int numPolygons;
+};
+//========================================================================================
+struct bspPlane
+{
+public:
+	DllExport bspPlane();
+	DllExport ~bspPlane();
+
+	DllExport D3DXPLANE createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3);
+
+	D3DXPLANE *plane;
+};
+//========================================================================================
+struct bspTree
+{
+public:
+	DllExport bspTree();
+	DllExport ~bspTree();
+
+	DllExport void checkTree(D3DXVECTOR3 *camPos);
+	DllExport void addPlaneToVector(bspPlane plane);
+	DllExport void addMeshToVector(Mesh *mesh);
+
+	vector <bspPlane> planesVector;
+	vector <Mesh*> meshesVector;
 };
 //========================================================================================
 #endif

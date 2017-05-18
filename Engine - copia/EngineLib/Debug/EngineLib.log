@@ -1,3 +1,6 @@
-﻿     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.exp
-  EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll
-  EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)
+﻿  Mesh.cpp
+c:\users\822\graficos-iii\engine - copia\enginelib\mesh.cpp(172): warning C4018: '<': no coinciden signed/unsigned
+c:\users\822\graficos-iii\engine - copia\enginelib\mesh.cpp(177): warning C4018: '<': no coinciden signed/unsigned
+cl : Línea de comandos warning D9028: error de recompilación mínimo, revirtiendo a la compilación normal
+  EngineLib.vcxproj -> C:\Users\822\Graficos-III\Engine - copia\Debug\EngineLib.dll
+  EngineLib.vcxproj -> C:\Users\822\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)

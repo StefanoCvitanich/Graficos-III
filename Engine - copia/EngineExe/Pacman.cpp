@@ -123,6 +123,9 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	if (input.keyDown(Input::KEY_L))
 		nodo1->setScale(nodo1->scaleX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleZ() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 
+	if (input.keyDown(Input::KEY_R))
+		nodo1->childs()[0]->setRotation(nodo1->rotationX(),nodo1->rotationY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->rotationZ());
+	
 	//Transformaciones Teapot
 	if (input.keyDown(Input::KEY_UP)){
 		nodo1->childs()[0]->setScale(nodo1->childs()[0]->scaleX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleY() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleZ() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
@@ -140,6 +143,9 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
+
+	arbol->checkTree(camera->getPos());
+
 	_root.draw(rkRenderer, col, camera->getFrustum());
 
 	_max->updateBV();

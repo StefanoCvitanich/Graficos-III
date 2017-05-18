@@ -136,17 +136,22 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 
 	size_t buscar = mesh->getName().find("Plano");
 
+	bspTree *tree = new bspTree();
+
 	if (buscar != string::npos)
 	{
-		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
+		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ); //SUMAR LA POSICION DE LOS MPUNTOS DEL MESH PLANO
 		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
 		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().maxPointY, mesh->getAABB().minPointZ);
 
 		bspPlane *BSP = new bspPlane();
 		BSP->createPlane(pV1, pV2, pV3);
 		
-		bspTree *tree = new bspTree();
 		tree->addPlaneToVector(*BSP);
+	}
+	else
+	{
+		tree->addMeshToVector(mesh);
 	}
 
 	return *mesh;

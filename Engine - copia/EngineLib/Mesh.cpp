@@ -152,6 +152,12 @@ D3DXPLANE bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p
 
 	D3DXPlaneNormalize(plane, plane);
 
+	D3DXVECTOR3 normal;
+	normal.x = plane->a;
+	normal.y = plane->b;
+	normal.z = plane->c;
+	cout << normal.x << " "<< normal.y <<" "<< normal.z << endl;
+
 	return *plane;
 }
 //=====================================================
@@ -161,39 +167,41 @@ bspTree::bspTree() {
 bspTree::~bspTree() {
 }
 //=====================================================
-void bspTree::checkTree(Entity3D *mesh, D3DXVECTOR3 *camPos) {
+void bspTree::checkTree(D3DXVECTOR3 *camPos) {
 
-	/*
-			*****Tengo que hacer que este metodo funcione con una lista/vector de meshes en vez de pasar un mesh como parametro****
-
-			***El importer cada vez que procesa un mesh tiene qque agregarlo a esta lista/vector****
-	*/
-
-
-
-	D3DXVECTOR3 *max = new D3DXVECTOR3(mesh->getAABB().max[0], mesh->getAABB().max[1], mesh->getAABB().max[2]);
-	D3DXVECTOR3 *min = new D3DXVECTOR3(mesh->getAABB().min[0], mesh->getAABB().min[1], mesh->getAABB().min[2]);
-
-	for (int i = 0; i <= planesVector.size(); i++)
+	for (int j = 0; j < meshesVector.size(); j++)
 	{
-		float meshMaxCheck = D3DXPlaneDotCoord(planesVector[i].plane, max);
-		float meshMinCheck = D3DXPlaneDotCoord(planesVector[i].plane, min);
-		float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, camPos);
+		D3DXVECTOR3 *max = new D3DXVECTOR3(meshesVector[j]->getAABB().max[0], meshesVector[j]->getAABB().max[1], meshesVector[j]->getAABB().max[2]);
+		D3DXVECTOR3 *min = new D3DXVECTOR3(meshesVector[j]->getAABB().min[0], meshesVector[j]->getAABB().min[1], meshesVector[j]->getAABB().min[2]);
 
-		if ((camCheck > 0 && meshMaxCheck > 0) || (camCheck < 0 && meshMaxCheck < 0) || (camCheck > 0 && meshMinCheck > 0) || (camCheck < 0 && meshMinCheck < 0) ||camCheck == 0 || meshMaxCheck == 0 || meshMinCheck == 0)
+		for (int i = 0; i < planesVector.size(); i++)
 		{
-			mesh->canBeDrawn = true;
+			float meshMaxCheck = D3DXPlaneDotCoord(planesVector[i].plane, max);
+			float meshMinCheck = D3DXPlaneDotCoord(planesVector[i].plane, min);
+			float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, camPos);
+
+			if ((camCheck > 0 && meshMaxCheck > 0) || (camCheck < 0 && meshMaxCheck < 0) || (camCheck > 0 && meshMinCheck > 0) || (camCheck < 0 && meshMinCheck < 0) || camCheck == 0 || meshMaxCheck == 0 || meshMinCheck == 0)
+			{
+				meshesVector[j]->canBeDrawn = true;
+			}
+			else
+			{
+				meshesVector[j]->canBeDrawn = false;
+				break;
+			}
 		}
-		else
-		{
-			mesh->canBeDrawn = false;
-			break;
-		}
+
+	
 	}
 }
 //=====================================================
 void bspTree::addPlaneToVector(bspPlane plane) {
 
 	planesVector.push_back(plane);
+}
+//=====================================================
+void bspTree::addMeshToVector(Mesh *mesh) {
+
+	meshesVector.push_back(mesh);
 }
 //=====================================================
