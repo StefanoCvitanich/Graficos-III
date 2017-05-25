@@ -27,15 +27,35 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 	nodo.setName(assimpNode.mName.C_Str());
 	cout << nodo.getName() << endl;
 
-	aiVector3t<float> position, scaling;
+	aiVector3t<float> position, scaling, rotInEulerAngles;
 	aiQuaterniont<float> rotation;
 	assimpNode.mTransformation.Decompose(scaling, rotation, position);
+	
+	float xsqr = rotation.x * rotation.x;
+	float ysqr = rotation.y * rotation.y;
+	float zsqr = rotation.z * rotation.z;
+
+	// roll (x-axis rotation)
+	float t0 = +2.0 * (rotation.w * rotation.x + rotation.y * rotation.z);
+	float t1 = +1.0 - 2.0 * (xsqr + ysqr);
+	rotInEulerAngles.x = std::atan2(t0, t1);
+
+	// pitch (y-axis rotation)
+	float t2 = +2.0 * (rotation.w * rotation.y - rotation.z * rotation.x);
+	t2 = t2 > 1.0 ? 1.0 : t2;
+	t2 = t2 < -1.0 ? -1.0 : t2;
+	rotInEulerAngles.y = std::asin(t2);
+
+	// yaw (z-axis rotation)
+	float t3 = +2.0 * (rotation.w * rotation.z + rotation.x * rotation.y);
+	float t4 = +1.0 - 2.0 * (ysqr + zsqr);
+	rotInEulerAngles.z = std::atan2(t3, t4);
 
 	nodo.setPosX(position.x);
 	nodo.setPosY(position.y);
 	nodo.setPosZ(position.z);
 	nodo.setScale(scaling.x, scaling.y, scaling.z);
-	nodo.setRotation(rotation.x, rotation.y, rotation.z);
+	nodo.setRotation(rotInEulerAngles.x, rotInEulerAngles.y, rotInEulerAngles.z);
 
 	for (size_t j = 0; j < assimpNode.mNumMeshes; j++){
 		Mesh& mesh = processMesh(*scene.mMeshes[assimpNode.mMeshes[j]], assimpNode, scene);
@@ -134,13 +154,13 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 		mesh->setTextureId(0, _renderer.loadTexture("Assets/" + fullPath, D3DCOLOR_XRGB(255, 0, 255)));
 	}
 
-	size_t buscar = mesh->getName().find("Plano");
+	size_t buscar = mesh->getName().find("Plane");
 
 	bspTree *tree = new bspTree();
 
 	if (buscar != string::npos)
 	{
-		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ); //SUMAR LA POSICION DE LOS MPUNTOS DEL MESH PLANO
+		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
 		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
 		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().maxPointY, mesh->getAABB().minPointZ);
 

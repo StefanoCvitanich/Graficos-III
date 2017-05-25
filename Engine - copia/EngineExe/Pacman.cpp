@@ -31,7 +31,7 @@ bool Pacman::init(Renderer& rkRenderer){
 	camera->setPos(0, 10, -30);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/Escena_bsp.dae", _root))
+	if (!_importer->importScene("Assets/Escena_BSP.x", _root))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();

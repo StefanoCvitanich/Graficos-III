@@ -148,17 +148,17 @@ bspPlane::~bspPlane(){
 //=====================================================
 D3DXPLANE bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3) {
 
-	D3DXPlaneFromPoints(plane, p1, p2, p3);
+	D3DXPlaneFromPoints(&plane, p1, p2, p3);
 
-	D3DXPlaneNormalize(plane, plane);
+	D3DXPlaneNormalize(&plane, &plane);
 
 	D3DXVECTOR3 normal;
-	normal.x = plane->a;
-	normal.y = plane->b;
-	normal.z = plane->c;
+	normal.x = plane.a;
+	normal.y = plane.b;
+	normal.z = plane.c;
 	cout << normal.x << " "<< normal.y <<" "<< normal.z << endl;
 
-	return *plane;
+	return plane;
 }
 //=====================================================
 bspTree::bspTree() {
@@ -176,9 +176,9 @@ void bspTree::checkTree(D3DXVECTOR3 *camPos) {
 
 		for (int i = 0; i < planesVector.size(); i++)
 		{
-			float meshMaxCheck = D3DXPlaneDotCoord(planesVector[i].plane, max);
-			float meshMinCheck = D3DXPlaneDotCoord(planesVector[i].plane, min);
-			float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, camPos);
+			float meshMaxCheck = D3DXPlaneDotCoord(&(planesVector[i].plane), max);
+			float meshMinCheck = D3DXPlaneDotCoord(&planesVector[i].plane, min);
+			float camCheck = D3DXPlaneDotCoord(&(planesVector[i].plane), camPos);
 
 			if ((camCheck > 0 && meshMaxCheck > 0) || (camCheck < 0 && meshMaxCheck < 0) || (camCheck > 0 && meshMinCheck > 0) || (camCheck < 0 && meshMinCheck < 0) || camCheck == 0 || meshMaxCheck == 0 || meshMinCheck == 0)
 			{

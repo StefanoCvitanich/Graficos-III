@@ -2,6 +2,11 @@
 #define MESH_H
 //========================================================================================
 #include "Entity3D.h"
+#include <d3d9.h>
+#pragma comment (lib, "d3d9.lib") 
+#include <d3dx9.h>
+#pragma comment (lib, "d3dx9.lib") 
+#include "d3dx9math.h"
 //========================================================================================
 using namespace std;
 //========================================================================================
@@ -53,7 +58,7 @@ public:
 
 	DllExport D3DXPLANE createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3);
 
-	D3DXPLANE *plane;
+	D3DXPLANE plane;
 };
 //========================================================================================
 struct bspTree
