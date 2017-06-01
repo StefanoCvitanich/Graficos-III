@@ -85,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="bspPlane.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="bspTree.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -177,6 +183,12 @@
     </ClInclude>
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="bspPlane.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="bspTree.h">
+      <Filter>Headers\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">

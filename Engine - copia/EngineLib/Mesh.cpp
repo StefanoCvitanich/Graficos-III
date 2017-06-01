@@ -4,6 +4,8 @@
 #include "BoundingBox.h"
 #include <algorithm>
 #include <iostream>
+#pragma comment (lib, "d3d9.lib") 
+#pragma comment (lib, "d3dx9.lib") 
 //=====================================================
 Mesh::Mesh(Renderer& renderer):
 	_renderer (renderer),
@@ -139,13 +141,16 @@ void Mesh::updateNames(std::vector<std::string>& names, int& entityIndex){
 void Mesh::setNumPolygons(unsigned int polys){
 	numPolygons = polys;
 }
+/*
 //=====================================================
 bspPlane::bspPlane(){
 }
 //=====================================================
 bspPlane::~bspPlane(){
 }
+*/
 //=====================================================
+/*
 D3DXPLANE bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3) {
 
 	D3DXPlaneFromPoints(&plane, p1, p2, p3);
@@ -160,7 +165,9 @@ D3DXPLANE bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p
 
 	return plane;
 }
+*/
 //=====================================================
+/*
 bspTree::bspTree() {
 }
 //=====================================================
@@ -190,11 +197,13 @@ void bspTree::checkTree(D3DXVECTOR3 *camPos) {
 				break;
 			}
 		}
-
 	
 	}
+
 }
+*/
 //=====================================================
+/*
 void bspTree::addPlaneToVector(bspPlane plane) {
 
 	planesVector.push_back(plane);
@@ -204,4 +213,5 @@ void bspTree::addMeshToVector(Mesh *mesh) {
 
 	meshesVector.push_back(mesh);
 }
+*/
 //=====================================================

@@ -2,11 +2,11 @@
 #define MESH_H
 //========================================================================================
 #include "Entity3D.h"
-#include <d3d9.h>
-#pragma comment (lib, "d3d9.lib") 
-#include <d3dx9.h>
-#pragma comment (lib, "d3dx9.lib") 
-#include "d3dx9math.h"
+#include "DLLExport.h"
+//#include "d3dx9math.h"
+//#include <d3d9.h>
+//#include <d3dx9.h>
+#include "bspPlane.h"
 //========================================================================================
 using namespace std;
 //========================================================================================
@@ -48,31 +48,6 @@ private:
 	Texture _texture;
 	const TexturedVertex* _verts;
 	unsigned int numPolygons;
-};
-//========================================================================================
-struct bspPlane
-{
-public:
-	DllExport bspPlane();
-	DllExport ~bspPlane();
-
-	DllExport D3DXPLANE createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3);
-
-	D3DXPLANE plane;
-};
-//========================================================================================
-struct bspTree
-{
-public:
-	DllExport bspTree();
-	DllExport ~bspTree();
-
-	DllExport void checkTree(D3DXVECTOR3 *camPos);
-	DllExport void addPlaneToVector(bspPlane plane);
-	DllExport void addMeshToVector(Mesh *mesh);
-
-	vector <bspPlane> planesVector;
-	vector <Mesh*> meshesVector;
 };
 //========================================================================================
 #endif

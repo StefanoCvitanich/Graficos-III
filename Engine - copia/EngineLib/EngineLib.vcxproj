@@ -70,6 +70,8 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="bspPlane.cpp" />
+    <ClCompile Include="bspTree.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="directinput.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -102,6 +104,8 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="bspPlane.h" />
+    <ClInclude Include="bspTree.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="directinput.h" />
     <ClInclude Include="DLLExport.h" />

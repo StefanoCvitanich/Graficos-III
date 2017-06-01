@@ -12,18 +12,18 @@ _renderer(renderer){}
 //=============================================================================================================
 Importer::~Importer(){}
 //=============================================================================================================
-bool Importer::importScene(const std::string& fileName, Nodo& rootNode){
+bool Importer::importScene(const std::string& fileName, Nodo& rootNode, bspTree &tree){
 	Assimp::Importer importer;
 
 	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_ConvertToLeftHanded);
 	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) return false;
 
-	processNode(rootNode, *scene->mRootNode, *scene);
+	processNode(rootNode, *scene->mRootNode, *scene, tree);
 	rootNode.setRotation(0, rootNode.rotationY(), rootNode.rotationZ());
 	return true;
 }
 //=============================================================================================================
-bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene){
+bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene, bspTree &tree){
 	nodo.setName(assimpNode.mName.C_Str());
 	cout << nodo.getName() << endl;
 
@@ -58,7 +58,7 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 	nodo.setRotation(rotInEulerAngles.x, rotInEulerAngles.y, rotInEulerAngles.z);
 
 	for (size_t j = 0; j < assimpNode.mNumMeshes; j++){
-		Mesh& mesh = processMesh(*scene.mMeshes[assimpNode.mMeshes[j]], assimpNode, scene);
+		Mesh& mesh = processMesh(*scene.mMeshes[assimpNode.mMeshes[j]], assimpNode, scene, tree);
 		mesh.setParent(&nodo);
 		nodo.addChild(mesh);
 	}
@@ -70,13 +70,13 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		nodo.addChild(*nodoHijo);
 		nodoHijo->setParent(&nodo);
 
-		processNode(*nodoHijo, *assimpNode.mChildren[i], scene);
+		processNode(*nodoHijo, *assimpNode.mChildren[i], scene, tree);
 	}
 
 	return true;
 }
 //=============================================================================================================
-Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScene& scene){
+Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScene& scene, bspTree &tree){
 	Mesh* mesh = new Mesh(_renderer);
 	string name = assimpNode.mName.C_Str();
 	mesh->setName(name + "_mesh");
@@ -156,8 +156,6 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 
 	size_t buscar = mesh->getName().find("Plane");
 
-	bspTree *tree = new bspTree();
-
 	if (buscar != string::npos)
 	{
 		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
@@ -167,11 +165,11 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 		bspPlane *BSP = new bspPlane();
 		BSP->createPlane(pV1, pV2, pV3);
 		
-		tree->addPlaneToVector(*BSP);
+		tree.addPlaneToVector(*BSP);
 	}
 	else
 	{
-		tree->addMeshToVector(mesh);
+		tree.addMeshToVector(mesh);
 	}
 
 	return *mesh;

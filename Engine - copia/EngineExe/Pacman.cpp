@@ -28,14 +28,14 @@ bool Pacman::init(Renderer& rkRenderer){
 	
 	arbol = new bspTree();
 
-	camera->setPos(0, 10, -30);
+	camera->setPos(0, 10, 0);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/Escena_BSP.x", _root))
+	if (!_importer->importScene("Assets/ConitoMalo.dae", _root, *arbol))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
-	nodo1 = (Nodo*)_root.childs()[4];
+	nodo1 = (Nodo*)_root.childs()[7];
 	
 	_max = new Mesh(rkRenderer);
 	_min = new Mesh(rkRenderer);
@@ -144,7 +144,7 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
 
-	arbol->checkTree(camera->getPos());
+	//arbol->checkTree(camera->getPos());
 
 	_root.draw(rkRenderer, col, camera->getFrustum());
 
@@ -160,10 +160,11 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		_text += names[i]+"\n";
 	}
 
+	/*
 	char buff[33];
 	string polysOnScreen = itoa(rkRenderer.numPolygonsOnScreen, buff, 10);
 	_text += polysOnScreen + "\n";
-
+	*/
 	_screenText->setText(_text);
 	_screenText->display(rkRenderer);
 }
