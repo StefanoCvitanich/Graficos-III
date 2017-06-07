@@ -9,10 +9,11 @@ bspPlane::bspPlane() {
 }
 //========================================================================================
 bspPlane::~bspPlane() {
-	if (plane) {
+	/*if (plane) {
 		delete plane;
 		plane = NULL;
-	}
+		
+	}*/
 }
 //========================================================================================
 D3DXPLANE* bspPlane::createPlane(D3DXVECTOR3 *p1, D3DXVECTOR3 *p2, D3DXVECTOR3 *p3) {

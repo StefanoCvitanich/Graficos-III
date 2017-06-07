@@ -19,7 +19,7 @@ bool Importer::importScene(const std::string& fileName, Nodo& rootNode, bspTree 
 	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) return false;
 
 	processNode(rootNode, *scene->mRootNode, *scene, tree);
-	rootNode.setRotation(0, rootNode.rotationY(), rootNode.rotationZ());
+	//rootNode.setRotation(0, rootNode.rotationY(), rootNode.rotationZ());
 	return true;
 }
 //=============================================================================================================
@@ -27,35 +27,15 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene,
 	nodo.setName(assimpNode.mName.C_Str());
 	cout << nodo.getName() << endl;
 
-	aiVector3t<float> position, scaling, rotInEulerAngles;
+	aiVector3t<float> position, scaling;
 	aiQuaterniont<float> rotation;
 	assimpNode.mTransformation.Decompose(scaling, rotation, position);
 	
-	float xsqr = rotation.x * rotation.x;
-	float ysqr = rotation.y * rotation.y;
-	float zsqr = rotation.z * rotation.z;
-
-	// roll (x-axis rotation)
-	float t0 = +2.0 * (rotation.w * rotation.x + rotation.y * rotation.z);
-	float t1 = +1.0 - 2.0 * (xsqr + ysqr);
-	rotInEulerAngles.x = std::atan2(t0, t1);
-
-	// pitch (y-axis rotation)
-	float t2 = +2.0 * (rotation.w * rotation.y - rotation.z * rotation.x);
-	t2 = t2 > 1.0 ? 1.0 : t2;
-	t2 = t2 < -1.0 ? -1.0 : t2;
-	rotInEulerAngles.y = std::asin(t2);
-
-	// yaw (z-axis rotation)
-	float t3 = +2.0 * (rotation.w * rotation.z + rotation.x * rotation.y);
-	float t4 = +1.0 - 2.0 * (ysqr + zsqr);
-	rotInEulerAngles.z = std::atan2(t3, t4);
-
 	nodo.setPosX(position.x);
 	nodo.setPosY(position.y);
 	nodo.setPosZ(position.z);
 	nodo.setScale(scaling.x, scaling.y, scaling.z);
-	nodo.setRotation(rotInEulerAngles.x, rotInEulerAngles.y, rotInEulerAngles.z);
+	nodo.setRotation(rotation.x, rotation.y, rotation.z, rotation.w);
 
 	for (size_t j = 0; j < assimpNode.mNumMeshes; j++){
 		Mesh& mesh = processMesh(*scene.mMeshes[assimpNode.mMeshes[j]], assimpNode, scene, tree);
@@ -128,7 +108,7 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 	mesh->setPosY(position.y);
 	mesh->setPosZ(position.z);
 	mesh->setScale(scaling.x, scaling.y, scaling.z);
-	mesh->setRotation(rotation.x, rotation.y, rotation.z);
+	mesh->setRotation(rotation.x, rotation.y, rotation.z, rotation.w);
 	cout << mesh->posX() << " " << mesh->posY() << " " << mesh->posZ() << endl;
 	
 	mesh->updateWorldTransformation();
@@ -158,9 +138,9 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 
 	if (buscar != string::npos)
 	{
-		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(mesh->getAABB().minPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
-		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().minPointY, mesh->getAABB().minPointZ);
-		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(mesh->getAABB().maxPointX, mesh->getAABB().maxPointY, mesh->getAABB().minPointZ);
+		D3DXVECTOR3 *pV1 = new D3DXVECTOR3(verts[0].x + mesh->posX(), verts[0].y + mesh->posY(), verts[0].z + mesh->posZ());
+		D3DXVECTOR3 *pV2 = new D3DXVECTOR3(verts[1].x + mesh->posX(), verts[1].y + mesh->posY(), verts[1].z + mesh->posZ());
+		D3DXVECTOR3 *pV3 = new D3DXVECTOR3(verts[2].x + mesh->posX(), verts[2].y + mesh->posY(), verts[2].z + mesh->posZ());
 
 		bspPlane *BSP = new bspPlane();
 		BSP->createPlane(pV1, pV2, pV3);

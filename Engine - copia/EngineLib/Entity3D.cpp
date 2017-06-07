@@ -12,6 +12,7 @@ Entity3D::Entity3D()
 	:
 	_transformationMatrix(new D3DXMATRIX()),
 	_worldTransformationMatrix(new D3DXMATRIX()),
+	_rotationQuaternion(new D3DXQUATERNION()),
 	_posX(0),
 	_posY(0),
 	_posZ(0),
@@ -20,6 +21,7 @@ Entity3D::Entity3D()
 	_rotationX(0),
 	_rotationY(0),
 	_rotationZ(0),
+	_rotationW(0),
 	_scaleX(1.0f),
 	_scaleY(1.0f),
 	_scaleZ(1.0f),
@@ -59,14 +61,24 @@ void Entity3D::setPosZ(float fPosZ){
 	updateLocalTransformation();
 }
 //==================================================================================
-void Entity3D::setRotation(float rotationX, float rotationY, float rotationZ){
-	_rotationX = rotationX;
-	_rotationY = rotationY;
-	_rotationZ = rotationZ;
+void Entity3D::setRotation(float rotationX, float rotationY, float rotationZ, float rotationW){
+	
+	_rotationQuaternion->x = rotationX;
+	_rotationQuaternion->y = rotationY;
+	_rotationQuaternion->z = rotationZ;
+	_rotationQuaternion->w = rotationW;
 
 	updateLocalTransformation();
 }
 //==================================================================================
+/*void Entity3D::setRotation(D3DXQUATERNION rotationQuaternion) {
+
+	*_rotationQuaternion = rotationQuaternion;
+
+	updateLocalTransformation();
+}
+*/
+ //==================================================================================
 void Entity3D::setScale(float fScaleX, float fScaleY){
 	_scaleX = fScaleX;
 	_scaleY = fScaleY;
@@ -203,7 +215,7 @@ void Entity3D::updateLocalTransformation(){
 
 	D3DXMATRIX rotationMat;
 
-	D3DXMatrixRotationYawPitchRoll(&rotationMat, _rotationY, _rotationX, _rotationZ);
+	D3DXMatrixRotationQuaternion(&rotationMat, _rotationQuaternion);
 
 	D3DXMATRIX scaleMat;
 	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, _scaleZ);

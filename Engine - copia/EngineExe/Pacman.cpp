@@ -28,37 +28,14 @@ bool Pacman::init(Renderer& rkRenderer){
 	
 	arbol = new bspTree();
 
-	camera->setPos(0, 10, 0);
+	camera->setPos(0, 0, -20);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/ConitoMalo.dae", _root, *arbol))
+	if (!_importer->importScene("Assets/Escena_BSP_Blender.dae", _root, *arbol))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
-	nodo1 = (Nodo*)_root.childs()[7];
-	
-	_max = new Mesh(rkRenderer);
-	_min = new Mesh(rkRenderer);
-
-	_min->setName("Min");
-	_max->setName("Max");
-
-	_max->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
-	_min->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
-	_max->buildAABB();
-	_min->buildAABB();
-	
-	_max->setPosX(nodo1->childs()[0]->getAABB().max[0]);
-	_max->setPosY(nodo1->childs()[0]->getAABB().max[1]);
-	_max->setPosZ(nodo1->childs()[0]->getAABB().max[2]);
-
-	_min->setPosX(nodo1->childs()[0]->getAABB().min[0]);
-	_min->setPosY(nodo1->childs()[0]->getAABB().min[1]);
-	_min->setPosZ(nodo1->childs()[0]->getAABB().min[2]);
-	_min->updateWorldTransformation();
-	_max->updateWorldTransformation();
-	_max->updateBV();
-	_min->updateBV();
+	nodo1 = (Nodo*)_root.childs()[0];
 
 	_screenText = new ScreenText();
 	_screenText->create(0, 0, 200, 720, 15, "arial", "", true, rkRenderer);
@@ -95,14 +72,6 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	camera->update(rkRenderer);
 
-	_max->setPosX(_root.getAABB().max[0]);
-	_max->setPosY(_root.getAABB().max[1]);
-	_max->setPosZ(_root.getAABB().max[2]);
-
-	_min->setPosX(_root.getAABB().min[0]);
-	_min->setPosY(_root.getAABB().min[1]);
-	_min->setPosZ(_root.getAABB().min[2]);
-
 	//Transformaciones Nodo1
 	if (input.keyDown(Input::KEY_A)){
 		nodo1->setPosX(nodo1->posX() - 2.0f * (timer.timeBetweenFrames() / 1000.0f));
@@ -124,7 +93,7 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		nodo1->setScale(nodo1->scaleX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleZ() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 
 	if (input.keyDown(Input::KEY_R))
-		nodo1->childs()[0]->setRotation(nodo1->rotationX(),nodo1->rotationY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->rotationZ());
+		//nodo1->childs()[0]->setRotation(nodo1->rotationX(),nodo1->rotationY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->rotationZ());
 	
 	//Transformaciones Teapot
 	if (input.keyDown(Input::KEY_UP)){
@@ -144,14 +113,9 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
 
-	//arbol->checkTree(camera->getPos());
+	arbol->checkTree(camera->getPos());
 
 	_root.draw(rkRenderer, col, camera->getFrustum());
-
-	_max->updateBV();
-	_min->updateBV();
-	_max->draw(rkRenderer, AllInside, camera->getFrustum());
-	_min->draw(rkRenderer, AllInside, camera->getFrustum());
 
 	int index = 0;
 	_root.updateNames(names, index);
@@ -173,20 +137,18 @@ void Pacman::deinit(){
 	delete camera;
 	delete _importer;
 	delete nodo1;
-	delete _max;
-	delete _min;
 	delete _screenText;
 }
 //==================================================================================
 void Pacman::moveNode1(Input& input){
-	_root.childs()[1]->setRotation(0, _root.childs()[1]->rotationY() + 1.0f * -0.001f, 0);
+	//_root.childs()[1]->setRotation(0, _root.childs()[1]->rotationY() + 1.0f * -0.001f, 0);
 }
 //==================================================================================
 void Pacman::moveMesh(Input& input){
-	nodo1->childs()[0]->setRotation(nodo1->childs()[0]->rotationX() + 1.0f * 0.001f, 0, 0);
+	//nodo1->childs()[0]->setRotation(nodo1->childs()[0]->rotationX() + 1.0f * 0.001f, 0, 0);
 }
 //==================================================================================
 void Pacman::moveRoot(Input& input){
-	_root.setRotation(0, 0, _root.rotationZ() + 1.0f * 0.001f);
+	//_root.setRotation(0, 0, _root.rotationZ() + 1.0f * 0.001f);
 }
 //==================================================================================

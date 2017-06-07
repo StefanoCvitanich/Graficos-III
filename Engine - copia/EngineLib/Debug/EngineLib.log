@@ -3,13 +3,7 @@ c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4
   c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
   c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(39): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(40): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(44): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(45): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(46): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(50): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\importer.cpp(51): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.exp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)

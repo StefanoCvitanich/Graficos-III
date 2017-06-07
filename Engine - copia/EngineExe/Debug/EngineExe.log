@@ -1,3 +1,7 @@
-﻿     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.exp
+﻿  Pacman.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
   EngineExe.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.exe
   EngineExe.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineExe.pdb (Full PDB)

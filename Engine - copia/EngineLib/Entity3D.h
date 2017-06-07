@@ -9,6 +9,7 @@
 //========================================================================================
 class Nodo;
 class BoundingBox;
+class D3DXQUATERNION;
 
 //========================================================================================
 class Entity3D
@@ -19,7 +20,8 @@ public:
 	DllExport void setPosX(float fPosX);
 	DllExport void setPosY(float fPosY);
 	DllExport void setPosZ(float fPosZ);
-	DllExport void setRotation(float rotationX, float rotationY, float rotationZ);
+	DllExport void setRotation(float rotationX, float rotationY, float rotationZ, float rotationW);
+	//DllExport void setRotation(D3DXQUATERNION rotationQuaternion);
 	DllExport void setScale(float fScaleX, float fScaleY);
 	DllExport void setScale(float fScaleX, float fScaleY, float scaleZ);
 
@@ -71,7 +73,8 @@ protected:
 	std::string _name;
 	bool _isDrawn;
 
-	float _rotationX, _rotationY, _rotationZ;
+	float _rotationX, _rotationY, _rotationZ, _rotationW;
+	D3DXQUATERNION* _rotationQuaternion;
 
 	float _scaleX, _scaleY, _scaleZ;
 
