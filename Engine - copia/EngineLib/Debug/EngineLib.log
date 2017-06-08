@@ -1,9 +1,15 @@
-﻿  Importer.cpp
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
-c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+﻿  bspTree.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): note: vea la declaración de 'D3DXVECTOR3'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(162): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(162): note: vea la declaración de 'D3DXVECTOR3'
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(472): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(471): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bsptree.cpp(16): warning C4018: '<': no coinciden signed/unsigned
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bsptree.cpp(21): warning C4018: '<': no coinciden signed/unsigned
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)

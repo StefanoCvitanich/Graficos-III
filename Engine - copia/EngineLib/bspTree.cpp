@@ -11,6 +11,8 @@ bspTree::~bspTree() {
 //=====================================================
 void bspTree::checkTree(D3DXVECTOR3 *camPos) {
 
+	D3DXVECTOR3* _camPos = new D3DXVECTOR3(camPos->x, camPos->y, camPos->z);
+
 	for (int j = 0; j < meshesVector.size(); j++)
 	{
 		D3DXVECTOR3 *max = new D3DXVECTOR3(meshesVector[j]->getAABB().max[0], meshesVector[j]->getAABB().max[1], meshesVector[j]->getAABB().max[2]);
@@ -20,7 +22,7 @@ void bspTree::checkTree(D3DXVECTOR3 *camPos) {
 		{
 			float meshMaxCheck = D3DXPlaneDotCoord(planesVector[i].plane, max);
 			float meshMinCheck = D3DXPlaneDotCoord(planesVector[i].plane, min);
-			float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, camPos);
+			float camCheck = D3DXPlaneDotCoord(planesVector[i].plane, _camPos);
 
 			if ((camCheck > 0 && meshMaxCheck > 0) || (camCheck < 0 && meshMaxCheck < 0) || (camCheck > 0 && meshMinCheck > 0) || (camCheck < 0 && meshMinCheck < 0) || camCheck == 0 || meshMaxCheck == 0 || meshMinCheck == 0)
 			{
