@@ -23,9 +23,6 @@ private:
 	Camera* camera;
 	Nodo _root;
 
-	Mesh *_min;
-	Mesh *_max;
-
 	Importer* _importer;
 
 	ScreenText* _screenText;

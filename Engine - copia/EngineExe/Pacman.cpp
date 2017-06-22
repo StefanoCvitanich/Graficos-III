@@ -30,37 +30,12 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	camera->setPos(0, 0, -20);
 
-	_max = new Mesh(rkRenderer);
-	_min = new Mesh(rkRenderer);
-
-	_min->setName("Min");
-	_max->setName("Max");
-
-
-
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/Escena_BSP_Blender.dae", _root, *arbol))
+	if (!_importer->importScene("Assets/Escena_Gabi_Texturas.obj", _root, *arbol))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
-	nodo1 = (Nodo*)_root.childs()[0];
-
-	_max->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
-	_min->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
-	_max->buildAABB();
-	_min->buildAABB();
-
-	_max->setPosX(nodo1->childs()[0]->getAABB().max[0]);
-	_max->setPosY(nodo1->childs()[0]->getAABB().max[1]);
-	_max->setPosZ(nodo1->childs()[0]->getAABB().max[2]);
-
-	_min->setPosX(nodo1->childs()[0]->getAABB().min[0]);
-	_min->setPosY(nodo1->childs()[0]->getAABB().min[1]);
-	_min->setPosZ(nodo1->childs()[0]->getAABB().min[2]);
-	_min->updateWorldTransformation();
-	_max->updateWorldTransformation();
-	_max->updateBV();
-	_min->updateBV();
+	nodo1 = (Nodo*)_root.childs()[3];
 
 	_screenText = new ScreenText();
 	_screenText->create(0, 0, 200, 720, 15, "arial", "", true, rkRenderer);
@@ -96,14 +71,6 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->roll(input.mouseRelPosZ() * 0.1f * (timer.timeBetweenFrames() / 1000.0f));
 
 	camera->update(rkRenderer);
-
-	_max->setPosX(_root.getAABB().max[0]);
-	_max->setPosY(_root.getAABB().max[1]);
-	_max->setPosZ(_root.getAABB().max[2]);
-
-	_min->setPosX(_root.getAABB().min[0]);
-	_min->setPosY(_root.getAABB().min[1]);
-	_min->setPosZ(_root.getAABB().min[2]);
 
 	//Transformaciones Nodo1
 	if (input.keyDown(Input::KEY_A)){
@@ -150,11 +117,6 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	_root.draw(rkRenderer, col, camera->getFrustum());
 
-	_max->updateBV();
-	_min->updateBV();
-	_max->draw(rkRenderer, AllInside, camera->getFrustum());
-	_min->draw(rkRenderer, AllInside, camera->getFrustum());
-
 	int index = 0;
 	_root.updateNames(names, index);
 	for (size_t i = 0; i < names.size(); i++)
@@ -176,8 +138,6 @@ void Pacman::deinit(){
 	delete _importer;
 	delete nodo1;
 	delete _screenText;
-	delete _max;
-	delete _min;
 }
 //==================================================================================
 void Pacman::moveNode1(Input& input){

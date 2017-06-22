@@ -1,4 +1,19 @@
-﻿  bspTree.cpp
+﻿  vertexbuffer.cpp
+  tinyxml2.cpp
+  pg2_vertexbuffer.cpp
+  pg2_indexbuffer.cpp
+  pg1_timer.cpp
+  input.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+  directinput.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+  bspTree.cpp
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): note: vea la declaración de 'D3DXVECTOR3'
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
@@ -11,5 +26,69 @@ c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx
   c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(471): note: vea la declaración de 'D3DXPLANE'
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bsptree.cpp(16): warning C4018: '<': no coinciden signed/unsigned
 c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bsptree.cpp(21): warning C4018: '<': no coinciden signed/unsigned
+  bspPlane.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(162): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(162): note: vea la declaración de 'D3DXVECTOR3'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(472): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(471): note: vea la declaración de 'D3DXPLANE'
+  Window.cpp
+  Vector2.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\vector2.cpp(26): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+  TileMap.cpp
+  Tile.cpp
+  Sprite.cpp
+  Sound.cpp
+  ScreenText.cpp
+  Renderer.cpp
+  Random.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\random.cpp(4): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Quad.cpp
+  Physics.cpp
+  Generando código...
+  Compilando...
+  Nodo.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+  Mesh.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+  Importer.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+  Game.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+  Frustum.cpp
+  Frame.cpp
+  Entity3D.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+  Entity2D.cpp
+  Engine.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(4): warning C4099: 'D3DXPLANE': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.h(7): note: vea la declaración de 'D3DXPLANE'
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\bspplane.h(5): warning C4099: 'D3DXVECTOR3': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\renderer.h(15): note: vea la declaración de 'D3DXVECTOR3'
+  Camera.cpp
+  BoundingBox.cpp
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(426): warning C4099: 'D3DXQUATERNION': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\include\d3dx9math.h(425): note: vea la declaración de 'D3DXQUATERNION'
+  Animation.cpp
+  Generando código...
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\entity3d.cpp(256): warning C4715: 'Entity3D::findEntity': no todas las rutas de acceso de control devuelven un valor
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\frustum.cpp(86): warning C4715: 'Frustum::aabbVsFrustum': no todas las rutas de acceso de control devuelven un valor
+c:\users\822\documents\github\graficos-iii\engine - copia\enginelib\nodo.cpp(133): warning C4715: 'Nodo::findEntity': no todas las rutas de acceso de control devuelven un valor
+  LINK : no se encontró C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll o no lo generó el último vínculo incremental; ejecutando vínculo completo
+     Creando biblioteca C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.lib y objeto C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.exp
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.dll
   EngineLib.vcxproj -> C:\Users\822\Documents\GitHub\Graficos-III\Engine - copia\Debug\EngineLib.pdb (Full PDB)
